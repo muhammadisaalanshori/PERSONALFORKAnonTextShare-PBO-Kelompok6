@@ -55,24 +55,24 @@ public class OracleDBConnector extends DatabaseConnection implements DocumentAcc
 	/**
 	 * @see Database.DocumentAccesable#updateDocumentTitle(String, String, String)
 	 */
-	public void updateDocumentTitle(String docID, String docPass, String newTitle) {
-
+	public boolean updateDocumentTitle(String docID, String docPass, String newTitle) {
+            return false;
 	}
 
 
 	/**
 	 * @see Database.DocumentAccesable#updateDocumentText(String, String, String)
 	 */
-	public void updateDocumentText(String docID, String docPass, String newContents) {
-
+	public boolean updateDocumentText(String docID, String docPass, String newContents) {
+            return false;
 	}
 
 
 	/**
 	 * @see Database.DocumentAccesable#deleteDocument(String, String)
 	 */
-	public void deleteDocument(String docID, String docPass) {
-
+	public boolean deleteDocument(String docID, String docPass) {
+            return false;
 	}
 
 
