@@ -187,24 +187,24 @@ public class SimpleDB extends DatabaseConnection implements DocumentAccesable, C
 	/**
 	 * @see Database.CollectionsAccessable#updateCollectionTitle(String, String, String)
 	 */
-	public void updateCollectionTitle(String colID, String colPass, String newTitle) {
-
+	public boolean updateCollectionTitle(String colID, String colPass, String newTitle) {
+            return false;
 	}
 
 
 	/**
 	 * @see Database.CollectionsAccessable#updateCollectionContents(String, String, )
 	 */
-	public void updateCollectionContents(String colID, String colPass, List<String> newContents) {
-
+	public boolean updateCollectionContents(String colID, String colPass, List<String> newContents) {
+            return false;
 	}
 
 
 	/**
 	 * @see Database.CollectionsAccessable#deleteCollection(String, String)
 	 */
-	public void deleteCollection(String colID, String colPass) {
-
+	public boolean deleteCollection(String colID, String colPass) {
+            return false;
 	}
 
 }
