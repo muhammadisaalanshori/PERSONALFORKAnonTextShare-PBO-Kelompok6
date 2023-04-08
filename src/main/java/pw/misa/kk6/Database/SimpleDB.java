@@ -23,16 +23,36 @@ public class SimpleDB extends DatabaseConnection implements DocumentAccesable, C
 	/**
 	 * @see Database.DocumentAccesable#createDocument(String, String)
 	 */
-	public String createDocument(String title, String text) {
-		return null;
+        
+        
+        
+	public SimpleDB() {
+                this.idDocPassMap = new HashMap<String, String>();
+                this.idDocTitleMap = new HashMap<String, String>();
+                this.idDocContentMap = new HashMap<String, String>();
+                this.idColPassMap = new HashMap<String, String>();
+                this.idColTitleMap = new HashMap<String, String>();
+                this.idColContentMap = new HashMap<String, List<String>>();
 	}
+
+    public String createDocument(String title, String text) {
+        String newID = genID();
+        idDocTitleMap.put(newID, title);
+        idDocContentMap.put(newID, text);
+        idDocPassMap.put(newID, null);
+        return newID;
+    }
 
 
 	/**
 	 * @see Database.DocumentAccesable#createDocument(String, String, String)
 	 */
 	public String createDocument(String title, String text, String docPass) {
-		return null;
+		String newID = genID();
+                idDocTitleMap.put(newID, title);
+                idDocContentMap.put(newID, text);
+                idDocPassMap.put(newID, docPass);
+                return newID;
 	}
 
 
@@ -40,7 +60,7 @@ public class SimpleDB extends DatabaseConnection implements DocumentAccesable, C
 	 * @see Database.DocumentAccesable#checkDocument(String)
 	 */
 	public boolean checkDocument(String docID) {
-		return false;
+		return idDocTitleMap.containsKey(docID);
 	}
 
 
@@ -48,7 +68,17 @@ public class SimpleDB extends DatabaseConnection implements DocumentAccesable, C
 	 * @see Database.DocumentAccesable#checkDocument(String, String)
 	 */
 	public boolean checkDocument(String docID, String docPass) {
-		return false;
+		if (idDocPassMap.containsKey(docID)) {
+                    if (idDocPassMap.get(docID) == null) {
+                        return false;
+                    } else if (idDocPassMap.get(docID).equals(docPass)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
 	}
 
 
@@ -56,7 +86,7 @@ public class SimpleDB extends DatabaseConnection implements DocumentAccesable, C
 	 * @see Database.DocumentAccesable#getDocumentTitle(String)
 	 */
 	public String getDocumentTitle(String docID) {
-		return null;
+		return idDocTitleMap.get(docID);
 	}
 
 
@@ -64,31 +94,45 @@ public class SimpleDB extends DatabaseConnection implements DocumentAccesable, C
 	 * @see Database.DocumentAccesable#getDocumentText(String)
 	 */
 	public String getDocumentText(String docID) {
-		return null;
+		return idDocContentMap.get(docID);
 	}
 
 
 	/**
 	 * @see Database.DocumentAccesable#updateDocumentTitle(String, String, String)
 	 */
-	public void updateDocumentTitle(String docID, String docPass, String newTitle) {
-
+	public boolean updateDocumentTitle(String docID, String docPass, String newTitle) {
+            if (checkDocument(docID, docPass)) {
+                idDocTitleMap.replace(docID, newTitle);
+                return true;
+            }
+            return false;
 	}
 
 
 	/**
 	 * @see Database.DocumentAccesable#updateDocumentText(String, String, String)
 	 */
-	public void updateDocumentText(String docID, String docPass, String newContents) {
-
+	public boolean updateDocumentText(String docID, String docPass, String newContents) {
+            if (checkDocument(docID, docPass)) {
+                idDocContentMap.replace(docID, newContents);
+                return true;
+            }
+            return false;
 	}
 
 
 	/**
 	 * @see Database.DocumentAccesable#deleteDocument(String, String)
 	 */
-	public void deleteDocument(String docID, String docPass) {
-
+	public boolean deleteDocument(String docID, String docPass) {
+            if (checkDocument(docID, docPass)) {
+                idDocTitleMap.remove(docID);
+                idDocContentMap.remove(docID);
+                idDocPassMap.remove(docID);
+                return true;
+            }
+            return false;
 	}
 
 
@@ -143,24 +187,24 @@ public class SimpleDB extends DatabaseConnection implements DocumentAccesable, C
 	/**
 	 * @see Database.CollectionsAccessable#updateCollectionTitle(String, String, String)
 	 */
-	public void updateCollectionTitle(String colID, String colPass, String newTitle) {
-
+	public boolean updateCollectionTitle(String colID, String colPass, String newTitle) {
+            return false;
 	}
 
 
 	/**
 	 * @see Database.CollectionsAccessable#updateCollectionContents(String, String, )
 	 */
-	public void updateCollectionContents(String colID, String colPass, List<String> newContents) {
-
+	public boolean updateCollectionContents(String colID, String colPass, List<String> newContents) {
+            return false;
 	}
 
 
 	/**
 	 * @see Database.CollectionsAccessable#deleteCollection(String, String)
 	 */
-	public void deleteCollection(String colID, String colPass) {
-
+	public boolean deleteCollection(String colID, String colPass) {
+            return false;
 	}
 
 }

@@ -14,10 +14,10 @@ public abstract interface DocumentAccesable {
 
 	public abstract String getDocumentText(String docID);
 
-	public abstract void updateDocumentTitle(String docID, String docPass, String newTitle);
+	public abstract boolean updateDocumentTitle(String docID, String docPass, String newTitle);
 
-	public abstract void updateDocumentText(String docID, String docPass, String newContents);
+	public abstract boolean updateDocumentText(String docID, String docPass, String newContents);
 
-	public abstract void deleteDocument(String docID, String docPass);
+	public abstract boolean deleteDocument(String docID, String docPass);
 
 }

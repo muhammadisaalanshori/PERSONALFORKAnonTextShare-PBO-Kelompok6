@@ -55,24 +55,24 @@ public class OracleDBConnector extends DatabaseConnection implements DocumentAcc
 	/**
 	 * @see Database.DocumentAccesable#updateDocumentTitle(String, String, String)
 	 */
-	public void updateDocumentTitle(String docID, String docPass, String newTitle) {
-
+	public boolean updateDocumentTitle(String docID, String docPass, String newTitle) {
+            return false;
 	}
 
 
 	/**
 	 * @see Database.DocumentAccesable#updateDocumentText(String, String, String)
 	 */
-	public void updateDocumentText(String docID, String docPass, String newContents) {
-
+	public boolean updateDocumentText(String docID, String docPass, String newContents) {
+            return false;
 	}
 
 
 	/**
 	 * @see Database.DocumentAccesable#deleteDocument(String, String)
 	 */
-	public void deleteDocument(String docID, String docPass) {
-
+	public boolean deleteDocument(String docID, String docPass) {
+            return false;
 	}
 
 
@@ -127,24 +127,24 @@ public class OracleDBConnector extends DatabaseConnection implements DocumentAcc
 	/**
 	 * @see Database.CollectionsAccessable#updateCollectionTitle(String, String, String)
 	 */
-	public void updateCollectionTitle(String colID, String colPass, String newTitle) {
-
+	public boolean updateCollectionTitle(String colID, String colPass, String newTitle) {
+            return false;
 	}
 
 
 	/**
 	 * @see Database.CollectionsAccessable#updateCollectionContents(String, String, )
 	 */
-	public void updateCollectionContents(String colID, String colPass, List<String> newContents) {
-
+	public boolean updateCollectionContents(String colID, String colPass, List<String> newContents) {
+            return false;
 	}
 
 
 	/**
 	 * @see Database.CollectionsAccessable#deleteCollection(String, String)
 	 */
-	public void deleteCollection(String colID, String colPass) {
-
+	public boolean deleteCollection(String colID, String colPass) {
+            return false;
 	}
 
 }

@@ -14,10 +14,10 @@ public interface CollectionsAccessable {
 
 	public abstract List<String> getCollectionContents(String colID);
 
-	public abstract void updateCollectionTitle(String colID, String colPass, String newTitle);
+	public abstract boolean updateCollectionTitle(String colID, String colPass, String newTitle);
 
-	public abstract void updateCollectionContents(String colID, String colPass, List<String> newContents);
+	public abstract boolean updateCollectionContents(String colID, String colPass, List<String> newContents);
 
-	public abstract void deleteCollection(String colID, String colPass);
+	public abstract boolean deleteCollection(String colID, String colPass);
 
 }
