@@ -38,8 +38,8 @@ public class SimpleDB extends DatabaseConnection implements DocumentAccesable, C
 
     public String createDocument(String title, String text) {
         String newID = genID();
-        idDocTitleMap.put(newID, title);
-        idDocContentMap.put(newID, text);
+        idDocTitleMap.put(newID, new String(title));
+        idDocContentMap.put(newID, new String(text));
         idDocPassMap.put(newID, null);
         return newID;
     }
@@ -50,8 +50,8 @@ public class SimpleDB extends DatabaseConnection implements DocumentAccesable, C
 	 */
 	public String createDocument(String title, String text, String docPass) {
 		String newID = genID();
-                idDocTitleMap.put(newID, title);
-                idDocContentMap.put(newID, text);
+                idDocTitleMap.put(newID, new String(title));
+                idDocContentMap.put(newID, new String(text));
                 idDocPassMap.put(newID, docPass);
                 return newID;
 	}
@@ -104,7 +104,7 @@ public class SimpleDB extends DatabaseConnection implements DocumentAccesable, C
 	 */
 	public boolean updateDocumentTitle(String docID, String docPass, String newTitle) {
             if (checkDocument(docID, docPass)) {
-                idDocTitleMap.replace(docID, newTitle);
+                idDocTitleMap.replace(docID, new String(newTitle) );
                 return true;
             }
             return false;
@@ -116,7 +116,7 @@ public class SimpleDB extends DatabaseConnection implements DocumentAccesable, C
 	 */
 	public boolean updateDocumentText(String docID, String docPass, String newContents) {
             if (checkDocument(docID, docPass)) {
-                idDocContentMap.replace(docID, newContents);
+                idDocContentMap.replace(docID, new String(newContents));
                 return true;
             }
             return false;
@@ -142,7 +142,7 @@ public class SimpleDB extends DatabaseConnection implements DocumentAccesable, C
 	 */
 	public String createCollection(String title, List<String> contents) {
             String newID = genID();
-            idColTitleMap.put(newID, title);
+            idColTitleMap.put(newID, new String(title));
             idColContentMap.put(newID, new ArrayList<String>(contents));
             idColPassMap.put(newID, null);
             return newID;
@@ -154,7 +154,7 @@ public class SimpleDB extends DatabaseConnection implements DocumentAccesable, C
 	 */
 	public String createCollection(String title, List<String> contents, String colPass) {
 		String newID = genID();
-                idColTitleMap.put(newID, title);
+                idColTitleMap.put(newID, new String(title));
                 idColContentMap.put(newID, new ArrayList<String>(contents));
                 idColPassMap.put(newID, colPass);
                 return newID;
@@ -208,7 +208,7 @@ public class SimpleDB extends DatabaseConnection implements DocumentAccesable, C
 	 */
 	public boolean updateCollectionTitle(String colID, String colPass, String newTitle) {
             if (checkCollection(colID, colPass)) {
-                idColTitleMap.replace(colID, newTitle);
+                idColTitleMap.replace(colID, new String(newTitle));
                 return true;
             }
             return false;
